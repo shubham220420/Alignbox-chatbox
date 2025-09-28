@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Friday Group - Chat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-left">
+                <span class="time">9:41</span>
+            </div>
+            <div class="status-right">
+                <div class="signal-bars">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <i class="fas fa-wifi"></i>
+                <div class="battery">
+                    <div class="battery-level"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Header -->
+        <div class="chat-header">
+            <div class="header-left">
+                <button class="back-btn" title="Go back" aria-label="Go back">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <div class="group-avatar">
+                    <div class="avatar-placeholder">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="group-info">
+                    <h3 class="group-name">Fun Friday Group</h3>
+                    <span class="group-status">Online now</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="toggle-anonymous" id="anonymousToggle" title="Toggle Anonymous Mode">
+                    <i class="fas fa-user-secret"></i>
+                </button>
+                <button class="more-options" title="More options" aria-label="More options">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Anonymous Mode Banner -->
+        <div class="anonymous-banner hidden" id="anonymousBanner">
+            <div class="banner-content">
+                <i class="fas fa-user-secret"></i>
+                <span>Anonymously Chat group With Anonymous ON</span>
+            </div>
+        </div>
+
+        <!-- Chat Messages Area -->
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will be loaded here dynamically -->
+        </div>
+
+        <!-- Typing Indicator -->
+        <div class="typing-indicator hidden" id="typingIndicator">
+            <div class="typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <span class="typing-text">Someone is typing...</span>
+        </div>
+
+        <!-- Message Input -->
+        <div class="message-input-container">
+            <div class="input-wrapper">
+                <button class="attachment-btn" title="Add attachment" aria-label="Add attachment">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+                <button class="emoji-btn" title="Add emoji" aria-label="Add emoji">
+                    <i class="fas fa-smile"></i>
+                </button>
+                <input type="text" class="message-input" id="messageInput" placeholder="Type a message ...">
+                <button class="send-btn" id="sendBtn" title="Send message" aria-label="Send message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Anonymous User Status -->
+        <div class="anonymous-status hidden" id="anonymousStatus">
+            <span>Now you're appearing as Anonymous!</span>
+        </div>
+    </div>
+
+    <!-- Connection Status -->
+    <div class="connection-status hidden" id="connectionStatus">
+        <div class="status-content">
+            <i class="fas fa-wifi-slash"></i>
+            <span>Connecting...</span>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-content">
+            <div class="login-header">
+                <div class="login-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h2>Join Fun Friday Group</h2>
+                <p>Enter your name to start chatting</p>
+            </div>
+            <div class="login-form">
+                <div class="input-group">
+                    <label for="userNameInput">Your Name</label>
+                    <input type="text" id="userNameInput" placeholder="Enter your name..." maxlength="50" autocomplete="name">
+                    <div class="input-error" id="nameError"></div>
+                </div>
+                <div class="login-options">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="joinAnonymous">
+                        <label for="joinAnonymous">Join as Anonymous</label>
+                    </div>
+                </div>
+                <button class="join-btn" id="joinBtn" disabled>
+                    <i class="fas fa-sign-in-alt"></i>
+                    Join Chat
+                </button>
+            </div>
+            <div class="login-footer">
+                <small>You can toggle anonymous mode anytime during the chat</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Socket.io and JavaScript -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
